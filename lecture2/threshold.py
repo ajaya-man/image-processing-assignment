@@ -5,9 +5,9 @@ moon = os.path.join(os.path.dirname(__file__), "../assets/moon.tif")
 image = cv2.imread(moon)
 
 threshold = 127
-max = 255
+max_intensity = 255
 
-threshold_image = (image > threshold).astype('uint8') * max
+threshold_image = (image > threshold).astype('uint8') * max_intensity
 
 cv2.imshow("Original", image)
 cv2.imshow("Threshold", threshold_image)
