@@ -58,3 +58,21 @@ def correlation_with_no_padding(img, mask_size):
 
     img_new = img_new.astype(np.uint8)
     return img_new
+
+
+def median_filter_with_no_padding(img, mask_size):
+    # Obtain number of rows and columns
+    # of the image
+    m, n = img.shape
+
+    img_new = np.zeros([m, n])
+
+    start_row = mask_size // 2
+    start_column = mask_size // 2
+    for i in range(start_row, m - start_row):
+        for j in range(start_column, n - start_column):
+            temp = np.median(img[i - start_row:i + start_row + 1, j - start_column:j + start_column + 1])
+            img_new[i, j] = temp
+
+    img_new = img_new.astype(np.uint8)
+    return img_new
