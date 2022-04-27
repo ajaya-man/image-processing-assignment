@@ -97,6 +97,7 @@ xz=5.2.5=h1de35cc_0
 zipp=3.8.0=pypi_0
 zlib=1.2.12=h4dc903c_2
 
-opencv-python~=4.5.5.64
-numpy~=1.21.6
-matplotlib~=3.5.1
+opencv-python==4.5.5.64
+numpy==1.21.6
+matplotlib==3.5.1
+scipy==1.5.2
