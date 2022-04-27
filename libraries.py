@@ -36,24 +36,20 @@ def median_filter(img, filter_size=3):
     return img_copy
 
 
-def correlation_with_no_padding(img, mask_size):
+def correlation_with_no_padding(img, filter):
     # Obtain number of rows and columns
     # of the image
     m, n = img.shape
 
-    # Develop Averaging filter mask
-    mask = np.ones([mask_size, mask_size], dtype=int)
-    mask = mask / (mask_size * mask_size)
-
     # Convolve the 3X3 mask over the image
     img_new = np.zeros([m, n])
-    filter_height, filter_width = mask.shape
+    filter_height, filter_width = filter.shape
 
     start_row = filter_height // 2
     start_column = filter_width // 2
     for i in range(start_row, m - start_row):
         for j in range(start_column, n - start_column):
-            temp = np.sum(img[i - start_row:i + start_row + 1, j - start_column:j + start_column + 1] * mask)
+            temp = np.sum(img[i - start_row:i + start_row + 1, j - start_column:j + start_column + 1] * filter)
             img_new[i, j] = temp
 
     img_new = img_new.astype(np.uint8)

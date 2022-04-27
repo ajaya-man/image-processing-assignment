@@ -5,7 +5,9 @@ image = cv2.imread(noisy_pcb, 0)
 
 cv2.imshow("Original", image)
 
-averaged_image = correlation_with_no_padding(image, mask_size=5)
+filter = np.ones([3, 3], dtype=int)
+filter = filter / (3 * 3)
+averaged_image = correlation_with_no_padding(image, filter)
 cv2.imshow("Averaged filtered image", averaged_image)
 cv2.waitKey(100)
 
